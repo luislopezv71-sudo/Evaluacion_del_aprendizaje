@@ -1,20 +1,13 @@
-# Evaluación del y para el aprendizaje · Maestría en Educación
+# Clase 02 — Evaluación para el aprendizaje
 
-Curso de siete clases sabatinas de 90 minutos. La primera clase incluye teoría, guía audiovisual, laboratorio interactivo, rúbrica, evaluación de salida y descarga de evidencia.
+## Instalación
+Subir la carpeta `clase_02/` completa a la raíz del repositorio `Evaluacion_del_aprendizaje`, junto a `clase_01/`. No sobrescribir el `index.html` principal. Agregar al portal principal un enlace a `clase_02/index.html`.
 
-## Cómo publicar
-1. Descomprime el paquete y sube `index.html` y la carpeta `clase_01` a la raíz de un repositorio GitHub público.
-2. En Settings → Pages, selecciona **Deploy from a branch**, la rama principal y la carpeta `/ (root)`.
-3. Abre la URL de GitHub Pages; entra a Clase 01.
-4. Modifica `clase_01/recursos.json` para colocar enlaces HTTPS a video, infografía y tarjetas.
-5. Comprueba visualización desde celular. Los botones de avance local no cargan calificaciones a una base institucional.
+## Recursos NotebookLM
+Editar `clase_02/recursos.json` con las URLs públicas (no agregar claves privadas). Los alumnos también pueden registrar enlaces locales y exportar la configuración; **esto no actualiza GitHub**. Drive se muestra en visor incrustado si lo permiten los permisos. NotebookLM se abre como enlace externo si no admite incrustación.
 
-## Archivos
-- `index.html`: portal del curso.
-- `clase_01/index.html`: artefacto autocontenido.
-- `clase_01/recursos.json`: enlaces configurables.
-- `clase_01/Fuente_Academica_Clase_01_NotebookLM.docx`: lectura estructurada para NotebookLM.
-- `clase_01/Prompts_NotebookLM_Clase_01.md`: instrucciones para recursos didácticos.
+## Biblioteca digital
+Respuestas autoguardadas en localStorage; exportación por actividad HTML, portafolio completo HTML, respaldo/importación JSON. Guardar los HTML e imprimirlos a PDF si se desea. Los recursos audiovisuales no se descargan automáticamente desde sitios ajenos. Las respuestas no se envían al profesor ni a un servidor.
 
-## Ética, licencia y alcance
-Fuente: Sánchez Mendiola, M. y Martínez González, A. (Eds.), UNAM (2020), *Evaluación del y para el aprendizaje*. CC BY-NC-SA 4.0. Esta adaptación educativa se entrega para uso no comercial, con atribución y licencia compatible. No se incluyeron archivos multimedia generados por NotebookLM; sus enlaces se añaden después.
+## Criterio académico
+90 minutos, evidencias argumentadas y protocolo de realimentación. Fuente principal: capítulo 2 (pp. 41–49) UNAM 2020. Material docente adaptado.
