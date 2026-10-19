@@ -1,20 +1,22 @@
 # Evaluación del y para el Aprendizaje — Maestría en Educación
 
-Plataforma académica para **7 sesiones sabatinas de 90 minutos**, con teoría, recursos audiovisuales, prácticas de posgrado y biblioteca digital de evidencias. [Portal del curso](https://luislopezv71-sudo.github.io/Evaluacion_del_aprendizaje/).
+**Siete clases sabatinas de 90 minutos** con materiales interactivos, instrumentos de evaluación, fuentes NotebookLM y biblioteca digital del maestrante.
 
-## Clases
+**Portal:** https://luislopezv71-sudo.github.io/Evaluacion_del_aprendizaje/
 
-| Clase | Tema | Estado |
+## Mapa completo de las clases
+
+| Clase | Contenido | Recurso |
 |---|---|---|
-| 01 | [Fundamentos de la evaluación educativa](clase_01/index.html) | Disponible |
-| 02 | [Evaluación para el aprendizaje](clase_02/index.html) | Disponible |
-| 03 | [Instrumentos de evaluación cuantitativa](clase_03/index.html) | Preparada para publicación |
-| 04 | [Evaluación cualitativa y auténtica](clase_04/index.html) | Preparada para publicación |
-| 05 | Casos, problemas, proyectos e investigación | Disponible | [Abrir](clase_05/index.html) |
-| 06 | Diario de campo, ECOE y uso de resultados | Disponible | [Abrir](clase_06/index.html) |
-| 07 | Proyecto integrador y defensa | Próxima |
+| 01 | Fundamentos de la evaluación educativa | [Artefacto](clase_01/index.html) |
+| 02 | Evaluación para el aprendizaje | [Artefacto](clase_02/index.html) |
+| 03 | Instrumentos cuantitativos | [Artefacto](clase_03/index.html) |
+| 04 | Evaluación cualitativa y auténtica | [Artefacto](clase_04/index.html) |
+| 05 | Casos, problemas, proyectos e investigación | [Artefacto](clase_05/index.html) |
+| 06 | Observación, desempeño y uso de resultados | [Artefacto](clase_06/index.html) |
+| 07 | Proyecto integrador y defensa | [Artefacto](clase_07/index.html) |
 
-## Estructura
+## Estructura del repositorio
 
 ```text
 Evaluacion_del_aprendizaje/
@@ -23,61 +25,51 @@ Evaluacion_del_aprendizaje/
 ├── clase_01/
 ├── clase_02/
 ├── clase_03/
+├── clase_04/
+├── clase_05/
+├── clase_06/
+└── clase_07/
     ├── index.html
     ├── recursos.json
-    ├── Fuente_Academica_Clase_03_NotebookLM.docx
-    ├── Prompts_NotebookLM_Clase_03.md
-    └── README.md
-└── clase_04/
-    ├── index.html
-    ├── recursos.json
-    ├── Fuente_Academica_Clase_04_NotebookLM.docx
-    ├── Prompts_NotebookLM_Clase_04.md
+    ├── Fuente_Academica_Clase_07_NotebookLM.docx
+    ├── Prompts_NotebookLM_Clase_07.md
     └── README.md
 ```
 
-## Estructura de cada clase
+Las carpetas de clases anteriores mantienen sus propios recursos, fuentes y prompts.
 
-1. Inicio y pregunta detonadora con respuesta.
-2. Fundamentos conceptuales y discusión crítica.
-3. Audiovisuales con guía antes/durante/después y campos de respuesta.
-4. Laboratorio con ejercicios y retroalimentación.
-5. Evidencia profesional para proyecto integrador.
-6. Cierre y biblioteca digital descargable.
+## Metodología estándar
 
-## Publicación
+1. Inicio con pregunta detonadora respondible.
+2. Fundamentación conceptual con ejemplos críticos.
+3. Cinco recursos de NotebookLM: video, infografía, presentación, tarjetas y blog de audio.
+4. Guía audiovisual con respuestas antes, durante y después.
+5. Laboratorios y productos aplicados para el proyecto integrador.
+6. Evidencias descargables, portafolio HTML y respaldo/importación JSON.
 
-Subir carpeta `clase_03` al mismo nivel que las clases anteriores. Sustituir los archivos `index.html` y `README.md` de la raíz con los de `actualizacion_raiz/` **después** de confirmar que Clase 03 está subida. No borrar carpetas previas. GitHub Pages: rama `main`, carpeta raíz.
+## Evidencias del proyecto integrador
 
-## Materiales NotebookLM
+01. Diagnóstico de práctica evaluativa. 02. Protocolo formativo. 03. Batería de instrumentos. 04. Protocolo de evaluación auténtica. 05. Evaluación por casos, problemas, proyectos e investigación. 06. Observación, desempeño y análisis de resultados. 07. Integración y defensa final.
 
-Completar las cinco URLs en `clase_03/recursos.json` para video, infografía, tarjetas, presentación y audio. Se muestran embebidos cuando el proveedor y permisos lo permiten; enlaces externos siempre como alternativa. Los cambios del estudiante en la interfaz no modifican recursos globales de GitHub.
+La defensa final de Clase 07 utiliza una rúbrica propuesta de 40 puntos: alineación (8), instrumentos y evidencias (10), interpretación/realimentación (8), calidad técnica y ética (8), defensa oral (6). La ponderación institucional definitiva debe fijarse en el programa de estudios.
+
+## Audiovisuales
+
+En cada `clase_XX/recursos.json` configurar URLs externas para `video`, `infografia`, `presentacion`, `tarjetas` y `audio`. Un cambio de enlace capturado localmente por el estudiante **no actualiza GitHub**. La posibilidad de incrustar el archivo depende de permisos y restricciones del servicio externo.
 
 ## Biblioteca digital
 
-Las respuestas se guardan con almacenamiento local, exportables en HTML, con respaldo e importación JSON. Hay generadores de lista de cotejo y rúbrica imprimibles en Clase 03. El progreso local no se sincroniza ni sustituye la entrega institucional. Los audiovisuales alojados en servicios externos no se descargan automáticamente.
+El contenido escrito se conserva localmente mediante `localStorage`; puede descargarse en HTML o respaldarse en JSON, según las herramientas de cada clase. Los archivos externos no se copian automáticamente y las respuestas no se transmiten a un servidor ni al docente. Conviene guardar respaldos en un medio adicional para evitar pérdidas al limpiar el navegador.
 
-## Derechos y fuente
+## Publicación
 
-Sánchez Mendiola, M., & Martínez González, A. (Eds.). (2020). *Evaluación del y para el aprendizaje: instrumentos y estrategias*. UNAM. [Licencia CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es).
+1. Subir `clase_07/` a la raíz, junto a las clases 01–06.
+2. Sustituir `index.html` y `README.md` de la raíz por los de `actualizacion_raiz/`, **después** de subir Clase 07.
+3. En GitHub Pages, utilizar `main` y `/ (root)`; abrir el portal y comprobar cada enlace.
+4. Verificar permisos de los audiovisuales y exportación/recuperación en el navegador.
 
-## Clase 04
+## Fuente académica y derechos
 
-Incluye el estudio de los capítulos 7–12 del libro UNAM, un laboratorio de selección de estrategias, un caso de portafolio, simulación profesional y protocolo evaluable con respaldo digital.
+Sánchez Mendiola, M., & Martínez González, A. (Eds.). (2020). *Evaluación del y para el aprendizaje: instrumentos y estrategias*. Universidad Nacional Autónoma de México. [Licencia CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es).
 
-```text
-clase_04/
-├── index.html
-├── recursos.json
-├── Fuente_Academica_Clase_04_NotebookLM.docx
-├── Prompts_NotebookLM_Clase_04.md
-└── README.md
-```
-
-## Clase 05 añadida
-
-`clase_05/`: artefacto, `recursos.json`, fuente Word, prompts y guía README. Capítulos 13–16 de UNAM (2020).
-
-## Clase 06
-
-`clase_06/` integra artefacto HTML, configuración audiovisual, fuente académica y prompts de NotebookLM. Capítulos 17–19 UNAM (2020).
+La Clase 07 es una **integración didáctica del curso**, no un capítulo adicional del libro de la UNAM. Al reutilizar o adaptar materiales del libro, respetar los términos de su licencia. Los materiales externos pueden tener permisos propios.
