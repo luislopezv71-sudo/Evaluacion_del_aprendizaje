@@ -9,7 +9,7 @@ Plataforma académica para **7 sesiones sabatinas de 90 minutos**, con teoría, 
 | 01 | [Fundamentos de la evaluación educativa](clase_01/index.html) | Disponible |
 | 02 | [Evaluación para el aprendizaje](clase_02/index.html) | Disponible |
 | 03 | [Instrumentos de evaluación cuantitativa](clase_03/index.html) | Preparada para publicación |
-| 04 | Evaluación cualitativa y auténtica | Próxima |
+| 04 | [Evaluación cualitativa y auténtica](clase_04/index.html) | Preparada para publicación |
 | 05 | Estudio de casos, problemas y proyectos | Próxima |
 | 06 | Observación, desempeño y resultados | Próxima |
 | 07 | Proyecto integrador y defensa | Próxima |
@@ -22,11 +22,17 @@ Evaluacion_del_aprendizaje/
 ├── README.md
 ├── clase_01/
 ├── clase_02/
-└── clase_03/
+├── clase_03/
     ├── index.html
     ├── recursos.json
     ├── Fuente_Academica_Clase_03_NotebookLM.docx
     ├── Prompts_NotebookLM_Clase_03.md
+    └── README.md
+└── clase_04/
+    ├── index.html
+    ├── recursos.json
+    ├── Fuente_Academica_Clase_04_NotebookLM.docx
+    ├── Prompts_NotebookLM_Clase_04.md
     └── README.md
 ```
 
@@ -54,3 +60,16 @@ Las respuestas se guardan con almacenamiento local, exportables en HTML, con res
 ## Derechos y fuente
 
 Sánchez Mendiola, M., & Martínez González, A. (Eds.). (2020). *Evaluación del y para el aprendizaje: instrumentos y estrategias*. UNAM. [Licencia CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es).
+
+## Clase 04
+
+Incluye el estudio de los capítulos 7–12 del libro UNAM, un laboratorio de selección de estrategias, un caso de portafolio, simulación profesional y protocolo evaluable con respaldo digital.
+
+```text
+clase_04/
+├── index.html
+├── recursos.json
+├── Fuente_Academica_Clase_04_NotebookLM.docx
+├── Prompts_NotebookLM_Clase_04.md
+└── README.md
+```
