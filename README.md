@@ -11,7 +11,7 @@ Plataforma académica para **7 sesiones sabatinas de 90 minutos**, con teoría, 
 | 03 | [Instrumentos de evaluación cuantitativa](clase_03/index.html) | Preparada para publicación |
 | 04 | [Evaluación cualitativa y auténtica](clase_04/index.html) | Preparada para publicación |
 | 05 | Casos, problemas, proyectos e investigación | Disponible | [Abrir](clase_05/index.html) |
-| 06 | Observación, desempeño y resultados | Próxima |
+| 06 | Diario de campo, ECOE y uso de resultados | Disponible | [Abrir](clase_06/index.html) |
 | 07 | Proyecto integrador y defensa | Próxima |
 
 ## Estructura
@@ -77,3 +77,7 @@ clase_04/
 ## Clase 05 añadida
 
 `clase_05/`: artefacto, `recursos.json`, fuente Word, prompts y guía README. Capítulos 13–16 de UNAM (2020).
+
+## Clase 06
+
+`clase_06/` integra artefacto HTML, configuración audiovisual, fuente académica y prompts de NotebookLM. Capítulos 17–19 UNAM (2020).
