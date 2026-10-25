@@ -29,4 +29,48 @@ document.getElementById('allExport').onclick=()=>downloadFile('portafolio_clase0
 document.getElementById('backupExport').onclick=()=>{const saved={version:2,clase:'01',fecha:new Date().toISOString(),campos:Object.fromEntries(fields.map(el=>[el.id,el.value])),terminada:!!localStorage.getItem(prefix+'done'),recursos:mediaResources};downloadFile('respaldo_clase01.json',JSON.stringify(saved,null,2),'application/json;charset=utf-8');document.getElementById('libraryStatus').textContent='Respaldo descargado.'};
 document.getElementById('backupImportButton').onclick=()=>document.getElementById('backupImport').click();document.getElementById('backupImport').onchange=async e=>{try{const file=e.target.files?.[0];if(!file)return;const obj=JSON.parse(await file.text());if(obj.version!==1||obj.clase!=='01'||typeof obj.campos!=='object'||obj.campos===null)throw Error('Formato de respaldo no reconocido');if(!confirm('¿Restaurar este respaldo? Se reemplazarán las respuestas de esta clase guardadas en este navegador.'))return;fields.forEach(el=>{const value=obj.campos[el.id];if(typeof value==='string'){el.value=value;localStorage.setItem(prefix+el.id,value)}});if(obj.terminada)localStorage.setItem(prefix+'done','1');else localStorage.removeItem(prefix+'done');updateProgress();document.getElementById('libraryStatus').textContent='Respaldo restaurado correctamente.'}catch(err){document.getElementById('libraryStatus').textContent='No se pudo restaurar: '+err.message}finally{e.target.value=''}};
 updateProgress();
-</script></body></html>
+</script><style id="biblioteca-por-pestana-estilos">
+.bib-tab{margin:18px 0 5px;padding:18px;border:1px solid #d4e1ee;border-radius:14px;background:#f7faff;color:#192e48}
+.bib-tab h3{margin:0 0 6px;font-size:1.12rem}.bib-tab p{margin:0 0 12px;font-size:.91rem}
+.bib-tab .bib-acciones{display:flex;flex-wrap:wrap;gap:8px}
+.bib-tab button{border:1px solid #b9cbdc;border-radius:9px;background:white;color:#174f88;font-weight:700;padding:10px 13px;cursor:pointer;font:inherit}
+.bib-tab button:first-child{background:#174f88;color:white;border-color:#174f88}
+.bib-tab button:focus-visible{outline:3px solid #e3aa31;outline-offset:2px}
+.bib-tab .bib-aviso{font-size:.85rem;color:#52677a;margin-top:9px}
+@media print{.bib-tab{display:none!important}}
+</style>
+<script id="biblioteca-por-pestana-script">
+/* Complemento no invasivo: no cambia evaluaciones, videos ni guardado existente. */
+(()=>{'use strict';
+const m=location.pathname.match(/clase_0([1-7])\//i), lesson=m?'0'+m[1]:'XX';
+const panels=[...document.querySelectorAll('section.panel[id],section.tab[id]')];
+if(!panels.length)return;
+const labels={inicio:'Inicio',teoria:'Fundamentos',recursos:'Audiovisuales',audiovisual:'Audiovisuales',audiovisuales:'Audiovisuales',laboratorio:'Laboratorio',evidencia:'Evidencia',cierre:'Cierre y biblioteca'};
+const human=p=>labels[p.id]||p.id;
+const allInputs=()=>[...document.querySelectorAll('input,textarea,select')].filter(e=>e.id&&!e.closest('.bib-tab')&&!['file','hidden','button','submit'].includes(e.type));
+const titleFor=e=>{const tag=document.querySelector('label[for="'+CSS.escape(e.id)+'"]');return tag?.textContent.trim()||e.getAttribute('aria-label')||e.id};
+const valueFor=e=>['checkbox','radio'].includes(e.type)?(e.checked?e.value||'Sí':''):(e.value||'');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const save=(name,content,mime)=>{const obj=URL.createObjectURL(new Blob([content],{type:mime}));const a=document.createElement('a');a.href=obj;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(obj),2000)};
+const report=p=>{const fields=[...p.querySelectorAll('input,textarea,select')].filter(e=>e.id&&!e.closest('.bib-tab')&&!['file','hidden','button','submit'].includes(e.type));
+return '<!doctype html><html lang="es"><meta charset="utf-8"><title>Evidencia clase '+lesson+' - '+esc(human(p))+'</title><style>body{font:12pt/1.55 Arial,sans-serif;max-width:850px;margin:35px auto;color:#152d49}h1{font-size:21pt}h2{font-size:14pt;color:#174f88}article{padding:10px 0;border-bottom:1px solid #cdd8e2}p{white-space:pre-wrap;overflow-wrap:anywhere}</style><h1>Maestría en Educación · Clase '+esc(lesson)+'</h1><p>Evaluación del y para el aprendizaje | '+esc(human(p))+'</p><p>Exportado: '+esc(new Date().toLocaleString('es-MX'))+'</p>'+(fields.length?fields.map(e=>'<article><h2>'+esc(titleFor(e))+'</h2><p>'+esc(valueFor(e)||'Sin respuesta')+'</p></article>').join(''):'<p>Esta sección no contiene campos de respuesta.</p>')+'</html>'};
+const backup=()=>({formato:'biblioteca-evaluacion-v1',clase:lesson,fecha:new Date().toISOString(),campos:allInputs().map(e=>({id:e.id,valor:valueFor(e),tipo:e.type})),local:Object.fromEntries(Object.keys(localStorage).filter(k=>/^(edu_eval_c1_|eval_maestria_c02_|eval_maestria_c0|maestria_|eval_)/.test(k)).map(k=>[k,localStorage.getItem(k)]))});
+function restore(obj){if(obj.formato!=='biblioteca-evaluacion-v1'||obj.clase!==lesson||!Array.isArray(obj.campos))throw Error('Respaldo de otra clase o formato no compatible');
+for(const v of obj.campos){const e=document.getElementById(v.id);if(!e||typeof v.valor!=='string'||e.closest('.bib-tab'))continue;
+if(e.type==='checkbox'||e.type==='radio'){e.checked=(e.value===v.valor)}else if(e.tagName==='SELECT'){if([...e.options].some(o=>o.value===v.valor))e.value=v.valor}else e.value=v.valor;
+e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));}
+if(obj.local&&typeof obj.local==='object')for(const [k,v] of Object.entries(obj.local)){if(typeof v==='string'&&k.length<120&&v.length<200000&&/^(edu_eval_c1_|eval_maestria_c02_|eval_maestria_c0|maestria_|eval_)/.test(k)){try{localStorage.setItem(k,v)}catch{}}}}
+for(const panel of panels){if(panel.querySelector('.bib-tab'))continue;const block=document.createElement('aside');block.className='bib-tab';block.setAttribute('aria-label','Biblioteca digital de esta sección');
+const h=document.createElement('h3');h.textContent='Mi biblioteca digital · '+human(panel);
+const msg=document.createElement('p');msg.textContent='Tus respuestas se conservan automáticamente en este navegador. Puedes descargar esta sección o respaldar todo el avance de la clase.';
+const row=document.createElement('div');row.className='bib-acciones';
+const act=(label,handler)=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',handler);row.append(b)};
+act('Descargar esta sección (.html)',()=>save('Clase_'+lesson+'_'+panel.id+'.html',report(panel),'text/html;charset=utf-8'));
+act('Guardar avance de toda la clase (.json)',()=>save('Respaldo_Clase_'+lesson+'.json',JSON.stringify(backup(),null,2),'application/json'));
+const status=document.createElement('div');status.className='bib-aviso';status.setAttribute('role','status');
+act('Restaurar avance (.json)',()=>{const f=document.createElement('input');f.type='file';f.accept='.json,application/json';f.style.display='none';block.append(f);f.onchange=async()=>{try{if(!f.files?.[0])return;const o=JSON.parse(await f.files[0].text());if(!confirm('Restaurar respuestas de Clase '+lesson+' en este navegador?'))return;restore(o);status.textContent='Respaldo restaurado. Las respuestas están disponibles en las pestañas.'}catch(e){status.textContent='No se pudo restaurar: '+e.message}finally{f.remove()}};f.click()});
+const help=document.createElement('div');help.className='bib-aviso';help.textContent='Los materiales externos de Google Drive o NotebookLM conservan sus enlaces; no se descargan automáticamente.';
+block.append(h,msg,row,status,help);panel.append(block)}
+})();
+</script>
+</body></html>
